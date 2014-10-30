@@ -104,6 +104,7 @@ class neutron::agents::ml2::ovs (
   $arp_responder              = false,
   $firewall_driver            = 'neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver',
   $enable_distributed_routing = false,
+  $ovs_network_vlan_ranges = undef,
 ) {
 
   include neutron::params
@@ -152,6 +153,7 @@ class neutron::agents::ml2::ovs (
     'agent/arp_responder':              value => $arp_responder;
     'agent/enable_distributed_routing': value => $enable_distributed_routing;
     'ovs/integration_bridge':           value => $integration_bridge;
+    'ovs/network_vlan_ranges':              value => $ovs_network_vlan_ranges;
   }
 
   if ($firewall_driver) {
